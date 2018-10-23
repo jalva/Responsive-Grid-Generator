@@ -1,0 +1,101 @@
+﻿@using System.Web;
+
+@model WebAppWithGridGenerator.ViewModels.GridLayoutContainer_ViewModel
+
+@functions{
+    int getColumNumsFromQueryStringRowDefinitions(string queryString)
+    {
+        if (string.IsNullOrEmpty(queryString))
+            return 0;
+        var nvCol = System.Web.HttpUtility.ParseQueryString(queryString.TrimEnd('&'));
+        return nvCol.AllKeys.Sum(k => nvCol[k].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Length);
+    }
+
+    bool isQueryStringRowDefinitionsValid(string lgDefsQs, string mdDefsQs, string smDefsQs, string xsDefsQs)
+    {
+        var lgColCout = getColumNumsFromQueryStringRowDefinitions(lgDefsQs);
+        var mdColCount = getColumNumsFromQueryStringRowDefinitions(mdDefsQs);
+        var smColCount = getColumNumsFromQueryStringRowDefinitions(smDefsQs);
+        var xsColCount = getColumNumsFromQueryStringRowDefinitions(xsDefsQs);
+
+        return lgColCout == mdColCount && lgColCout == smColCount && lgColCout == xsColCount && lgColCout > 0;
+    }
+
+    string initializeNonQueryStringRowsDefinition(string definition, int totalColumns)
+    {
+        if (string.IsNullOrEmpty(definition)) return definition;
+
+        var newDefinitionString = "";
+        var patternDict = System.Web.HttpUtility.ParseQueryString(definition);
+
+        var rowCounter = 0;
+
+        for (var i = 0; i < totalColumns;)
+        {
+            var indx = rowCounter % patternDict.Keys.Count;
+            var colsCsv = patternDict[indx.ToString()];
+            if (string.IsNullOrEmpty(colsCsv))
+            {
+                indx = 0;
+                colsCsv = patternDict[indx];
+            }
+
+            var colsPerRow = colsCsv.Split(',').Count();
+            if (colsPerRow > totalColumns - i)
+                colsCsv = string.Join(",", colsCsv.Split(',').Take(totalColumns - i));
+
+            newDefinitionString += string.Format("{0}={1}&", rowCounter++, colsCsv);
+
+            i += colsPerRow;
+        }
+        return newDefinitionString.TrimEnd('&');
+    }
+            }
+
+@{
+    var id = Guid.NewGuid().ToString("N");
+            var bttnId = Guid.NewGuid().ToString("N");
+            var isIe = false; // HttpContext.Current.Request.Browser.Browser.Contains("InternetExplorer").ToString().ToLower();
+
+
+            //handle the case when the rows cols definition csv doesn't have the query string format
+            Model.Lg_Row_Indx_To_Col_Sizes_Csv = initializeNonQueryStringRowsDefinition(Model.Lg_Row_Indx_To_Col_Sizes_Csv, Model.ColumnPartialsWithModels.Count);
+            Model.Md_Row_Indx_To_Col_Sizes_Csv = initializeNonQueryStringRowsDefinition(Model.Md_Row_Indx_To_Col_Sizes_Csv, Model.ColumnPartialsWithModels.Count);
+            Model.Sm_Row_Indx_To_Col_Sizes_Csv = initializeNonQueryStringRowsDefinition(Model.Sm_Row_Indx_To_Col_Sizes_Csv, Model.ColumnPartialsWithModels.Count);
+            Model.Xs_Row_Indx_To_Col_Sizes_Csv = initializeNonQueryStringRowsDefinition(Model.Xs_Row_Indx_To_Col_Sizes_Csv, Model.ColumnPartialsWithModels.Count);
+
+
+    if (!isQueryStringRowDefinitionsValid(Model.Lg_Row_Indx_To_Col_Sizes_Csv, Model.Md_Row_Indx_To_Col_Sizes_Csv, Model.Sm_Row_Indx_To_Col_Sizes_Csv, Model.Xs_Row_Indx_To_Col_Sizes_Csv))
+    {
+        Model.Lg_Row_Indx_To_Col_Sizes_Csv = "1=4,4,4";
+        Model.Md_Row_Indx_To_Col_Sizes_Csv = "1=4,4,4";
+        Model.Sm_Row_Indx_To_Col_Sizes_Csv = "1=12";
+        Model.Xs_Row_Indx_To_Col_Sizes_Csv = "1=12";
+        
+    }
+
+        var gridGenerator = new ResponsiveLayoutGenerator.ResponsiveLayoutRenderer(
+            Model.Lg_Row_Indx_To_Col_Sizes_Csv,
+            Model.Md_Row_Indx_To_Col_Sizes_Csv,
+            Model.Sm_Row_Indx_To_Col_Sizes_Csv,
+            Model.Xs_Row_Indx_To_Col_Sizes_Csv);
+
+        var columnsContents = new List<string>();
+
+    foreach (var tuple in Model.ColumnPartialsWithModels)
+    {
+        var result = await Model.ViewRenderService.RenderToStringAsync(tuple.Item1, tuple.Item2);
+        columnsContents.Add(result);
+
+    }
+
+    var totalCols = Model.ColumnPartialsWithModels.Count;
+}
+
+@if (columnsContents.Any())
+    {
+    <div class="@Model.CssClasses clearfix">
+        @Html.Raw(gridGenerator.RenderColumnsGrid("main-column " + @Model.ColumnCssClasses, columnsContents))
+    </div>
+
+}

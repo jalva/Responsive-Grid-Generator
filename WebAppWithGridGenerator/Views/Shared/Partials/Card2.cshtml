@@ -1,0 +1,38 @@
+﻿@using WebAppWithGridGenerator.ViewModels
+@model Card_ViewModel
+@{
+    var id = Guid.NewGuid().ToString("N");
+}
+
+<div id="@id" class="card row clearfix">
+    <div class="col-xs-4">
+        <img class="img-circle img-responsive" src="@Model.ImgUrl" alt="@(Model.ImgAlt ?? Model.Subtitle)">
+    </div>
+    <div class="caption text-center col-xs-8">
+        <h3>
+            <a @(!string.IsNullOrEmpty(Model.DetailsUrl) ? $"href={Model.DetailsUrl}" : "")>
+                @Model.Title
+            </a>
+        </h3>
+        @if (!string.IsNullOrEmpty(Model.Title))
+        {
+            <p>
+                <h4>@Model.Subtitle</h4>
+            </p>
+        }
+        
+        <div class="bio">
+            @foreach (var paragraph in Model.DescriptionParagraphs)
+            {
+                <p>
+                    @paragraph
+                </p>
+            }
+        </div>
+        @if (!string.IsNullOrEmpty(Model.DetailsUrl))
+        {
+            <a class="btn btn-primary hidden-xs see-more see-more-lg" href="@Model.DetailsUrl">see more</a>
+        }
+    </div>
+</div>
+

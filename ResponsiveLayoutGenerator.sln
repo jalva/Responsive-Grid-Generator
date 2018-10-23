@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponsiveLayoutGenerator", "ResponsiveLayoutGenerator\ResponsiveLayoutGenerator.csproj", "{A338B91A-9F7B-45C1-A745-5580AB989CFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppWithGridGenerator", "WebAppWithGridGenerator\WebAppWithGridGenerator.csproj", "{C34E79B2-6C7F-4289-A8F3-424DA8576046}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A338B91A-9F7B-45C1-A745-5580AB989CFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A338B91A-9F7B-45C1-A745-5580AB989CFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A338B91A-9F7B-45C1-A745-5580AB989CFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A338B91A-9F7B-45C1-A745-5580AB989CFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C34E79B2-6C7F-4289-A8F3-424DA8576046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C34E79B2-6C7F-4289-A8F3-424DA8576046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C34E79B2-6C7F-4289-A8F3-424DA8576046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C34E79B2-6C7F-4289-A8F3-424DA8576046}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {50271911-118D-4214-ADEC-45EB2B76DDBD}
+	EndGlobalSection
+EndGlobal

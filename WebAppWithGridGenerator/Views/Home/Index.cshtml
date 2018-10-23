@@ -1,0 +1,130 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using WebAppWithGridGenerator.ViewModels
+
+<section>
+    <div class="container">
+        <div class="row">
+            @await Component.InvokeAsync("GridContainer", new GridLayoutContainer_ViewModel
+            {
+                Lg_Row_Indx_To_Col_Sizes_Csv = "0=12&1=6,6&2=4,4,4", // for large screen sizes use the pattern: 1 row with 1 column (col-lg-12), 1 row with 2 columns of equal width (col-lg-6), 1 row with 3 columns of equal width (col-lg-4)
+                Md_Row_Indx_To_Col_Sizes_Csv = "0=4,6,2&1=4,8", // for medium screen sizes use the pattern: 1 row with 3 columns (col-md-4 and col-md-6 and col-md-2), 1 row with 2 columns (col-md-4 and col-md-8)
+                Sm_Row_Indx_To_Col_Sizes_Csv = "0=6,6", // for small screen sizes use the pattern: 1 row with 2 columns of equal width (col-sm-6)
+                Xs_Row_Indx_To_Col_Sizes_Csv = "0=12", // for xsmall screen sizes use the pattern: 1 row with 1 column (col-xs-12)
+                
+                ColumnPartialsWithModels = new List<Tuple<string, object>>
+                {
+                    new Tuple<string, object>("Shared/Partials/Card", new Card_ViewModel
+                    {
+                        ImgUrl = "/images/profile.png",
+                        Title = "Title 1",
+                        Subtitle = "Subtitle 1",
+                        DescriptionParagraphs = new List<string>
+                        {
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in justo ligula. Nulla facilisi. Morbi non tellus vel augue commodo condimentum ac vitae metus.",
+                            "Proin vel ipsum vel erat porta porttitor. Sed urna libero, placerat et aliquet eget, facilisis quis ante. Pellentesque congue laoreet mattis. "
+                        },
+                        DetailsUrl = "#"
+                    }),
+                    new Tuple<string, object>("Shared/Partials/Card", new Card_ViewModel
+                    {
+                        ImgUrl = "/images/profile.png",
+                        Title = "Title 2",
+                        Subtitle = "Subtitle 2",
+                        DescriptionParagraphs = new List<string>
+                        {
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in justo ligula. Nulla facilisi. Morbi non tellus vel augue commodo condimentum ac vitae metus.",
+                            "Proin vel ipsum vel erat porta porttitor. Sed urna libero, placerat et aliquet eget, facilisis quis ante. Pellentesque congue laoreet mattis. "
+                        },
+                        DetailsUrl = "#"
+                    }),
+                    new Tuple<string, object>("Shared/Partials/Card", new Card_ViewModel
+                    {
+                        ImgUrl = "/images/profile.png",
+                        Title = "Title 3",
+                        Subtitle = "Subtitle 3",
+                        DescriptionParagraphs = new List<string>
+                        {
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in justo ligula. Nulla facilisi. Morbi non tellus vel augue commodo condimentum ac vitae metus.",
+                            "Proin vel ipsum vel erat porta porttitor. Sed urna libero, placerat et aliquet eget, facilisis quis ante. Pellentesque congue laoreet mattis. "
+                        },
+                        DetailsUrl = "#"
+                    }),
+                    new Tuple<string, object>("Shared/Partials/Card", new Card_ViewModel
+                    {
+                        ImgUrl = "/images/profile.png",
+                        Title = "Title 4",
+                        Subtitle = "Subtitle 4",
+                        DescriptionParagraphs = new List<string>
+                        {
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in justo ligula. Nulla facilisi. Morbi non tellus vel augue commodo condimentum ac vitae metus.",
+                            "Proin vel ipsum vel erat porta porttitor. Sed urna libero, placerat et aliquet eget, facilisis quis ante. Pellentesque congue laoreet mattis. "
+                        },
+                        DetailsUrl = "#"
+                    }),
+                    new Tuple<string, object>("Shared/Partials/Card", new Card_ViewModel
+                    {
+                        ImgUrl = "/images/profile.png",
+                        Title = "Title 5",
+                        Subtitle = "Subtitle 5",
+                        DescriptionParagraphs = new List<string>
+                        {
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in justo ligula. Nulla facilisi. Morbi non tellus vel augue commodo condimentum ac vitae metus.",
+                                "Proin vel ipsum vel erat porta porttitor. Sed urna libero, placerat et aliquet eget, facilisis quis ante. Pellentesque congue laoreet mattis. "
+                        },
+                        DetailsUrl = "#"
+                    }),
+                    new Tuple<string, object>("Shared/Partials/Card", new Card_ViewModel
+                    {
+                        ImgUrl = "/images/profile.png",
+                        Title = "Title 6",
+                        Subtitle = "Subtitle 6",
+                        DescriptionParagraphs = new List<string>
+                        {
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in justo ligula. Nulla facilisi. Morbi non tellus vel augue commodo condimentum ac vitae metus.",
+                            "Proin vel ipsum vel erat porta porttitor. Sed urna libero, placerat et aliquet eget, facilisis quis ante. Pellentesque congue laoreet mattis. "
+                        },
+                        DetailsUrl = "#"
+                    }),
+                    new Tuple<string, object>("Shared/Partials/Card", new Card_ViewModel
+                    {
+                        ImgUrl = "/images/profile.png",
+                        Title = "Title 7",
+                        Subtitle = "Subtitle 7",
+                        DescriptionParagraphs = new List<string>
+                        {
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in justo ligula. Nulla facilisi. Morbi non tellus vel augue commodo condimentum ac vitae metus.",
+                                "Proin vel ipsum vel erat porta porttitor. Sed urna libero, placerat et aliquet eget, facilisis quis ante. Pellentesque congue laoreet mattis. "
+                        }
+                    }),
+                    new Tuple<string, object>("Shared/Partials/Card2", new Card_ViewModel
+                    {
+                        ImgUrl = "/images/profile.png",
+                        Title = "Title 8",
+                        Subtitle = "Subtitle 8",
+                        DescriptionParagraphs = new List<string>
+                        {
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in justo ligula. Nulla facilisi. Morbi non tellus vel augue commodo condimentum ac vitae metus.",
+                            "Proin vel ipsum vel erat porta porttitor. Sed urna libero, placerat et aliquet eget, facilisis quis ante. Pellentesque congue laoreet mattis. "
+                        }
+                    }),
+                    new Tuple<string, object>("Shared/Partials/Card2", new Card_ViewModel
+                    {
+                        ImgUrl = "/images/profile.png",
+                        Title = "Title 9",
+                        Subtitle = "Subtitle 9",
+                        DescriptionParagraphs = new List<string>
+                        {
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in justo ligula. Nulla facilisi. Morbi non tellus vel augue commodo condimentum ac vitae metus.",
+                                "Proin vel ipsum vel erat porta porttitor. Sed urna libero, placerat et aliquet eget, facilisis quis ante. Pellentesque congue laoreet mattis. "
+                        }
+                    })
+
+                }
+
+            })
+        </div>
+    </div>
+</section>
