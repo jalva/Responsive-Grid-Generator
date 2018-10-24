@@ -66,5 +66,5 @@ The [following file](https://github.com/jalva/Responsive-Grid-Generator/blob/mas
                         },
                         DetailsUrl = "#"
                     }),
-                    ... rest of the custom views 
+                    ... rest of the custom views to render inside the responsive grid
 ```
