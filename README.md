@@ -4,7 +4,7 @@ Using the Responsive Grid Generator you can use a single ASP.Net Core View Compo
 This responsive grid layout view component will accept (as its model) a list of child partial views that will serve as the content rendered
 inside the gird's responsive columns. 
 
-This component uses a simple declarative approach to define the responsive grid, using a query string (name-value pair) syntax. This looks like: **0=6,6&1=2,8,2**.
+This component uses a simple declarative approach to define the responsive grid, using a query string (name-value pair) syntax. This looks like: **0=6,6&1=2,8,2** or **0=12** (see next paragraph for breakdown and explanation).
 The layout metadata describes the pattern in which to render your custom content (partial views) inside the responsive grid.
 The responsive grid is based on the Bootstrap 2.
 In order to declare the responsive grid using this component, you will need to provide the layout metadata for each of the 4 screen sizes (Bootstrap 2 breakpoints: Lg, Md, Sm and Xs).
