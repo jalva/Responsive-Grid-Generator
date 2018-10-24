@@ -25,12 +25,10 @@ The above line describes the grid layout in one of the 4 css breakpoints (screen
 * 2=4,4,4 - third row has three content columns which are of equal width (col-*-4)
 
 So the above layout query string describes a layout pattern consisting of 3 rows with the content columns described above. 
-Such a query string layout metadata has to be defined for all 4 screen sizes (Lg, Md, Sm and Xs). 
-*These responsive pattern query strings* only require you to specify the unique rows in the layout pattern. 
-For example, the above layout query string will repeat itself on a list of partial views of any length. 
-If there are more custom views to render than columns defined in the layout query string, then the pattern will repeat itself on the list of custom views (as shown in the snapshot).
-
-The grid generator doesn't care how many actual partial views it needs to render, it will apply the defined responsive pattern on any number of custom views passed.
+Such a query string has to be defined for all 4 screen sizes (Lg, Md, Sm and Xs). Each screen size can have a different layout query string defining a different responsive grid for every screen size. 
+You only need to specify the unique rows in the layout pattern query string. 
+For example, the above layout **0=12&1=6,6&2=4,4,4** defines a pattern of 3 rows, each having a different number of columns.
+This 3 row pattern will repeat itself on a list of partial views of any length. 
 
 The [following file](https://github.com/jalva/Responsive-Grid-Generator/blob/master/WebAppWithGridGenerator/Views/Home/Index.cshtml) contains the code that renders the **'GridContainer'** view component passing to it the responsive layout query strings as well as the partial views to render along with their coreesponding view models:
 
