@@ -30,7 +30,7 @@ You only need to specify the unique rows in the layout pattern query string.
 For example, the above layout **0=12&1=6,6&2=4,4,4** defines a pattern of 3 rows, each having a different number of columns.
 This 3 row pattern will repeat itself on a list of partial views of any length. 
 
-The [following file](https://github.com/jalva/Responsive-Grid-Generator/blob/master/WebAppWithGridGenerator/Views/Home/Index.cshtml) contains the code that renders the **'GridContainer'** view component passing to it the responsive layout query strings as well as the partial views to render along with their coreesponding view models:
+The [following file](https://github.com/jalva/Responsive-Grid-Generator/blob/master/WebAppWithGridGenerator/Views/Home/Index.cshtml) contains the code that renders the **'GridContainer'** view component passing to it the responsive layout query strings (for all 4 screen sizes) as well as the partial views to render along with their corresponding view models:
 
 ```
 @await Component.InvokeAsync("GridContainer", new GridLayoutContainer_ViewModel
