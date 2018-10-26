@@ -26,9 +26,9 @@ The above query string describes the grid layout shown in the screenshot. Let's 
 * 1=6,6 - second row has two content columns which are of equal width (col-*-6)
 * 2=4,4,4 - third row has three content columns which are of equal width (col-*-4)
 
-So the above layout query string describes a layout pattern consisting of 3 rows with the content columns described above. 
+So the above query string describes a layout pattern consisting of 3 rows with the content columns described above. 
 Such a query string has to be defined for all 4 screen sizes (Lg, Md, Sm and Xs). Each screen size can have a different layout query string, defining a different responsive grid for every screen size (any number of rows, any number of columns for each screen size). 
-You do not need to define each row in your dataset. The rows represent a pattern that will be repeated accross the rows in your dataset. A pattern has to have at least one row defined and you can define any number of rows.  
+*You do not need to define each row in your dataset.* The rows in the pattern do not correspond to the rows in your dataset, they represent a pattern that will be repeated accross the rows in your dataset. The pattern can work with any dataset of any length. A pattern has to have at least one row and you can define any number of rows in a pattern.  
 
 If you want the above layout to have all columns stacked on top of each other for any given screen size (for example, for Xs) then use the following query string syntax: **0=12** . This pattern defines a pattern consisting of one row that contains one full-width column.
 
