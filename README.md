@@ -1,5 +1,5 @@
 # Responsive-Grid-Generator
-If you ever need to declare responsive layouts on the server-side (for example using a CMS) then this component will give the ability to render responsive grid layouts. These responsive grids are capable of rendering any custom content, such as partial views. 
+If you ever need to declare responsive layouts on the server (for example using a CMS) then this component will give the ability to render responsive grid layouts. These responsive grids are capable of rendering any custom content, such as partial views. 
 See the [following file](https://github.com/jalva/Responsive-Grid-Generator/blob/master/WebAppWithGridGenerator/Views/Home/Index.cshtml) for an example usage of this view component.
 
 Using the Responsive Grid Generator you can use a single ASP.Net Core View Component which will render any custom responsive grid layout.
